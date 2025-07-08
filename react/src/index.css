@@ -78,12 +78,73 @@ button:focus-visible {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  position: relative;
 }
 
-.progress-bar {
+.progress-bar-bg {
+  width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, #646cff 0%, #535bf2 100%);
+  background: #e0e0e0;
+  opacity: 1;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.progress-bar-segment {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 10px 0 0 10px;
   transition: width 0.3s;
+}
+
+.progress-numbers-row {
+  width: 300px;
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  height: 24px;
+  margin-top: 2px;
+}
+
+.progress-number {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  font-size: 1em;
+  font-weight: bold;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.10);
+  z-index: 3;
+}
+
+.progress-legend {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+  color: #000;
+  gap: 8px;
+}
+
+.legend-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
 }
 
 @media (prefers-color-scheme: light) {
