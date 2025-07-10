@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 import './App.css'
 import shoheiImg from './assets/shohei.jpeg'
 
 function App() {
-  // Static values for the two indicators
-  const current = 31
-  const pace = 62
+  // State for API data
+  const [progressData, setProgressData] = useState({ current: 0, pace: 0 })
 
   // Color codes for each indicator (both blue shades)
   const colors = {
@@ -13,6 +13,19 @@ function App() {
     pace: '#7faaff',    // lighter blue
     black: '#000000'
   }
+
+  useEffect(() => {
+    axios.get('http://localhost:8000/api/progress/')
+      .then(res => {
+        setProgressData(res.data)
+      })
+      .catch(() => {
+        // fallback to static values if API fails
+        setProgressData({ current: 31, pace: 62 })
+      })
+  }, [])
+
+  const { current, pace } = progressData
 
   return (
     <div className="main-container">
